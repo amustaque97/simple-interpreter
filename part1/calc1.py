@@ -102,8 +102,10 @@ class Interpreter(object):
 
         # we expect the current token to be a '+' token
         op = self.current_token
-        # self.eat(PLUS)
-        self.current_token = self.get_next_token()
+        if op.type == PLUS:
+            self.eat(PLUS)
+        else:
+            self.eat(MINUS)
 
         # we expect the current token to be a single-digit integer
         right = self.current_token
